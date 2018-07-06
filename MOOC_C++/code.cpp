@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "code.h"
-//using namespace std;
+using namespace std;
+
+double Area(double a, double b, double c);
 
 double rate()
 {
@@ -71,6 +73,13 @@ int bubble_sort()
 }
 
 /* 计算三角形面积*/
+void triangle_Area()
+{
+	double a, b, c;
+	cout << "please input the triangle's three length of side to calculate its area.(separated by either commas or spaces)" << endl;;
+	cin >> a >> b >> c;
+	cout << "the area of this triangle is " << Area(a, b, c) << "." << endl;
+}
 double Area(double a, double b, double c)
 {
 	double size,p;

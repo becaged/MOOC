@@ -6,4 +6,4 @@
 
 double rate(); //用于计算利息
 int bubble_sort();//冒泡排序
-double Area(double a, double b, double c);
+void triangle_Area();//计算三角形面积
