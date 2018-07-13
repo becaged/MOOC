@@ -7,12 +7,24 @@ double rate()
 	double money, years, rate, sum;
 	std::cout << "请输入本金、存款年份、年利率，以空格隔开，按回车结束" << std::endl;
 	std::cin >> money >> years >> rate;
+	if (cin.fail())
+	{
+		std::cin.clear();
+		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');//清除当前行 
+		std::cout << "输入值非法" << std::endl;
+	}
 	while (money > 0)
 	{
 		sum = money * pow((1 + rate), years);
 		std::cout << "本息共" << sum << std::endl;
 		std::cout << "请输入本金、存款年份、年利率，以空格隔开，按回车结束\7" << std::endl;
 		std::cin >> money >> years >> rate;
+		if (cin.fail())
+		{
+			std::cin.clear();
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');//清除当前行 
+			std::cout << "输入值非法" << std::endl;
+		}
 	}
 	return money;
 }
@@ -20,30 +32,31 @@ double rate()
 /*bubble sort ,return the number of elements <100 冒泡排序 100以内 返回数组元素个数 */
 int bubble_sort()
 {
-	std::cout << "****冒泡排序****" << std::endl << std::endl;
+	std::cout << "********冒泡排序********" << std::endl << std::endl;
 	double arr[100];
 	int N = 0;
 	while (N < 1 || N > 100 )
 	{
 		std::cout <<"请输入待排序元素数量(1-100)"<< std::endl;
+		std::cin >> N;
 		if (std::cin.fail())
 		{
 			std::cin.clear();
-			std::cin.ignore();
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');//清除当前行 
 			std::cout << "输入值非法" << std::endl;
 		}
-		std::cin >> N;
 	}
  	for ( int i = 0; i < N; i++)
 	{
-		while ( std::cin.fail() )
-		{
-			std::cin.clear();
-			std::cin.ignore();
-			std::cout << "输入值非法" << std::endl;
-		}
 		std::cout << "输入第" << i + 1 << "个元素，共" << N << "个" << std::endl;
 		std::cin >> arr[i];
+		while (std::cin.fail())
+		{
+			std::cin.clear();
+			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');//清除当前行 
+			std::cout << "输入值非法" << std::endl;
+			i--;//恢复角标，重新输入上一个
+		}
 	}
 	std::cout << "输入结束" << std::endl;
 	for ( int i = 0 ; i < N-1; i++)
@@ -83,6 +96,12 @@ void triangle_Area()
 	double a, b, c;
 	cout << "please input the triangle's three length of side to calculate its area.(separated by either commas or spaces)" << endl;;
 	cin >> a >> b >> c;
+	if (cin.fail())
+	{
+		std::cin.clear();
+		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');//清除当前行 
+		std::cout << "输入值非法" << std::endl;
+	}
 	cout << "the area of this triangle is " << Area(a, b, c) << "." << endl;
 }
 
